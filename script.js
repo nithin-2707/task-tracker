@@ -9,7 +9,11 @@ let tasks = []
 function loadTasks() {
   const saved = localStorage.getItem('tasks')
   if (saved) {
-    tasks = JSON.parse(saved)
+    try {
+      tasks = JSON.parse(saved)
+    } catch (e) {
+      tasks = []
+    }
   }
 }
 
@@ -59,7 +63,8 @@ function render() {
     const toggle = document.createElement('button')
     toggle.className = 'task-toggle'
     toggle.innerHTML = t.done ? '↺' : '✓'
-    toggle.addEventListener('click', () => {
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation()
       tasks[i].done = !tasks[i].done
       saveTasks()
       render()
@@ -74,17 +79,22 @@ function render() {
   })
 }
 
-addBtn.addEventListener('click', () => {
+function addTask() {
   const val = input.value.trim()
   if (!val) return
   tasks.push({title: val, done: false})
   input.value = ''
   saveTasks()
   render()
-})
+}
+
+addBtn.addEventListener('click', addTask)
 
 input.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') addBtn.click()
+  if (e.key === 'Enter') {
+    e.preventDefault()
+    addTask()
+  }
 })
 
 loadTasks()
