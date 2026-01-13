@@ -47,3 +47,5 @@ Visit: https://nithin-2707.github.io/task-tracker/
 ---
 
 Built with HTML, CSS, and JavaScript
+## Author
+Gandrathi Nithin
