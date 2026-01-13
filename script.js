@@ -6,6 +6,17 @@ const dateEl = document.getElementById('currentDate')
 
 let tasks = []
 
+function loadTasks() {
+  const saved = localStorage.getItem('tasks')
+  if (saved) {
+    tasks = JSON.parse(saved)
+  }
+}
+
+function saveTasks() {
+  localStorage.setItem('tasks', JSON.stringify(tasks))
+}
+
 function updateDate() {
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
   const now = new Date()
@@ -50,6 +61,7 @@ function render() {
     toggle.innerHTML = t.done ? '↺' : '✓'
     toggle.addEventListener('click', () => {
       tasks[i].done = !tasks[i].done
+      saveTasks()
       render()
     })
     
@@ -67,6 +79,7 @@ addBtn.addEventListener('click', () => {
   if (!val) return
   tasks.push({title: val, done: false})
   input.value = ''
+  saveTasks()
   render()
 })
 
@@ -74,5 +87,6 @@ input.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') addBtn.click()
 })
 
+loadTasks()
 updateDate()
 render()
