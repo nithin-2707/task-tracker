@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Task Tracker</title>
+  <link rel="icon" type="image/png" href="favi.png">
+  <link rel="shortcut icon" type="image/png" href="favi.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo">
+      <img src="logo1.png" alt="Task Tracker" class="logo-img">
+    </div>
+    <nav class="menu">
+      <a href="#" class="menu-item active">
+        <span class="icon">📊</span>
+        <span>DASHBOARD</span>
+      </a>
+      <a href="#" class="menu-item">
+        <span class="icon">📁</span>
+        <span>PROJECTS</span>
+      </a>
+      <a href="#" class="menu-item">
+        <span class="icon">☰</span>
+        <span>MY TASK</span>
+      </a>
+      <a href="#" class="menu-item">
+        <span class="icon">📅</span>
+        <span>CALENDAR</span>
+      </a>
+      <a href="#" class="menu-item">
+        <span class="icon">⏱</span>
+        <span>TIME MANAGE</span>
+      </a>
+      <a href="#" class="menu-item">
+        <span class="icon">📈</span>
+        <span>REPORTS</span>
+      </a>
+      <a href="#" class="menu-item">
+        <span class="icon">⚙</span>
+        <span>SETTINGS</span>
+      </a>
+    </nav>
+  </div>
+  
+  <div class="main-content">
+    <header class="top-bar">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" placeholder="Search">
+      </div>
+      <div class="header-right">
+        <span class="notification">🔔</span>
+        <div class="user-avatar"></div>
+      </div>
+    </header>
+    
+    <div class="content-area">
+      <div class="task-section">
+        <div class="section-header">
+          <h2>My Tasks</h2>
+          <span class="task-count">(0)</span>
+        </div>
+        
+        <div class="add-task-box">
+          <input id="taskInput" type="text" placeholder="Enter a new task">
+          <button id="addBtn">Add Task</button>
+        </div>
+        
+        <div class="task-list" id="taskList"></div>
+      </div>
+      
+      <div class="sidebar-right">
+        <div class="date-display">
+          <span id="currentDate"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>
